@@ -68,13 +68,13 @@ export default {
       }
     },
     paintSalvoes(salvos, table) {
-      let keys = Object.keys(salvos);
-      for (let index in keys) {
-        var salvo = salvos[index];
-        for (let index2 in salvo) {
-          var location = salvo[index2];
+      for (let key in salvos) {
+        var salvo = salvos[key];
+        for (let index in salvo) {
+          var location = salvo[index];
           var loc = document.getElementById(location + table);
           loc.classList.add("salvo");
+          loc.innerHTML = key;
         }
       }
     }
@@ -144,31 +144,40 @@ td {
   width: 40px;
   border-style: solid;
   border-width: 1.5px;
+  /* background-image: URL("/blue-watercolor-texture-3-2-1024x736.jpg");
+  background-size: cover; */
 }
 .Patrol {
+  /* background-image: none; */
   background-color: green;
 }
 .Destroyer {
-  background-color: red;
+  /* background-image: none; */
+  background-color: yellow;
 }
 .Submarine {
+  /* background-image: none; */
   background-color: blue;
 }
 .Patrol.salvo,
 .Destroyer.salvo,
 .Submarine.salvo {
-  background-color: transparent;
+  /* background-color: transparent; */
   background-image: URL("/Explosion-155624_icon.svg");
 }
 .salvo {
-  background-image: URL("/C_Sea-512.png");
+  /* background-image: none;
+  background-color: rgb(70, 70, 240); */
+  background-image: URL("/Descarga.png");
   background-size: cover;
 }
 tr:first-child > td {
+  /* background-image: none; */
   border: none;
   font-weight: bold;
 }
 td:first-child {
+  /* background-image: none; */
   border: none;
   font-weight: bold;
 }

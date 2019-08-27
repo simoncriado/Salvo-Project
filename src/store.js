@@ -7,7 +7,8 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
     games: {},
-    singleGame: {}
+    singleGame: {},
+    leaderBoard: {}
   },
   mutations: {
     GET_GAMES: (state, data) => {
@@ -15,6 +16,9 @@ export default new Vuex.Store({
     },
     GET_SINGLEGAME: (state, data) => {
       state.singleGame = data
+    },
+    GET_LEADERBOARD: (state, data) => {
+      state.leaderBoard = data
     }
   },
   actions: {
@@ -29,6 +33,12 @@ export default new Vuex.Store({
         let singleGame = json.data;
         context.commit("GET_SINGLEGAME", singleGame)
       })
-    }
+    },
+    getLeaderBoard(context) {
+      axios.get("/api/leader_board").then(json => {
+        let leaderBoard = json.data;
+        context.commit("GET_LEADERBOARD", leaderBoard)
+      });
+    },
   }
 })

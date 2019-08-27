@@ -1,6 +1,7 @@
 <template>
   <div>
     <h1>SALVO!!</h1>
+    <h2>List of Games</h2>
     <v-simple-table class="gamesTable" fixed-header>
       <thead>
         <tr>
@@ -22,6 +23,27 @@
         </tr>
       </tbody>
     </v-simple-table>
+    <h2>Leader Board</h2>
+    <v-simple-table class="gamesTable" fixed-header>
+      <thead>
+        <tr>
+          <th class="text-left">Player</th>
+          <th class="text-left">Total Score</th>
+          <th class="text-left">Wins</th>
+          <th class="text-left">Losses</th>
+          <th class="text-left">Ties</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr v-for="(user, key) in leaderBoard" :key="key">
+          <td>{{ user[0] }}</td>
+          <td>{{ user[1].points }}</td>
+          <td>{{ user[1].wins }}</td>
+          <td>{{ user[1].loses }}</td>
+          <td>{{ user[1].draws }}</td>
+        </tr>
+      </tbody>
+    </v-simple-table>
   </div>
 </template>
 
@@ -33,10 +55,23 @@ export default {
   methods: {},
   created() {
     this.$store.dispatch("getGames");
+    this.$store.dispatch("getLeaderBoard");
   },
   computed: {
     games() {
       return this.$store.state.games;
+    },
+    leaderBoard() {
+      return Object.entries(this.$store.state.leaderBoard).sort((a, b) => {
+        if (a[1].points < b[1].points) {
+          return 1;
+        }
+        if (a[1].points > b[1].points) {
+          return -1;
+        } else {
+          return 0;
+        }
+      });
     }
   }
 };
