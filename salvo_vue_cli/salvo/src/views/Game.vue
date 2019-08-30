@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="text">
     <h1>Ship locations!</h1>
     <h2 v-if="singleGame.gamePlayers">
       {{singleGame.gamePlayers[0].player.email}}
@@ -46,7 +46,6 @@
     </div>
   </div>
 </template>
-
 <script>
 export default {
   props: ["id"],

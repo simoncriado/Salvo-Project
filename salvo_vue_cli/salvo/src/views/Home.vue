@@ -1,7 +1,6 @@
 <template>
-  <div>
-    <h1>SALVO!!</h1>
-    <h2>List of Games</h2>
+  <div class="text">
+    <h2 class="title">List of Games</h2>
     <v-simple-table class="gamesTable" fixed-header>
       <thead>
         <tr>
@@ -23,7 +22,7 @@
         </tr>
       </tbody>
     </v-simple-table>
-    <h2>Leader Board</h2>
+    <h2 class="title">Leader Board</h2>
     <v-simple-table class="gamesTable" fixed-header>
       <thead>
         <tr>
@@ -46,12 +45,12 @@
     </v-simple-table>
   </div>
 </template>
-
 <script>
 export default {
   data() {
     return {};
   },
+  component: {},
   methods: {},
   created() {
     this.$store.dispatch("getGames");
@@ -76,11 +75,20 @@ export default {
   }
 };
 </script>
-
 <style>
+.text {
+  padding-top: 20px;
+  padding-bottom: 20px;
+  padding-right: 30px;
+  padding-left: 30px;
+}
+.title {
+  text-align: center;
+  padding-top: 10px;
+  padding-bottom: 20px;
+}
 .gamesTable {
   margin-left: 30px;
   margin-right: 30px;
 }
 </style>
-
